@@ -1,24 +1,30 @@
-import React from "react";
-import { useUsers } from "../hooks";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Profile from "./Profile";
-import Going from "./Going";
-import NotGoing from "./NotGoing";
+import React from "react"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import Invite from "./Invite"
+import Going from "./Going"
+import NotGoing from "./NotGoing"
 
 function App(props) {
-  const { users } = useUsers();
-
-  console.log(users);
-
   return (
     <Router>
       <div>
-        <Route exact path="/" component={Profile} />
-        <Route exact path="/Going" component={Going} />
-        <Route exact path="/NotGoing" component={NotGoing} />
+        <ul className="Nav">
+          <li>
+            <Link to="/">Invite</Link>
+          </li>
+          <li>
+            <Link to="/Going">Going</Link>
+          </li>
+          <li>
+            <Link to="/NotGoing">Not Going</Link>
+          </li>
+        </ul>
+        <Route exact path="/" component={Invite} />
+        <Route path="/Going" component={Going} />
+        <Route path="/NotGoing" component={NotGoing} />
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

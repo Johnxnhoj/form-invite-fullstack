@@ -1,13 +1,23 @@
-import React from "react";
-import { useUsers } from "../hooks";
+import React from "react"
+import { useInvite } from "../hooks"
 
-function Going(props) {
-  const { users } = useUsers();
+export default props => {
+  const { going } = useInvite()
+
   return (
-    <div>
-      <p>Going</p>
-      <div className="Page"></div>
+    <div className="Container-1">
+      {going.map(person => (
+        <div key={"going" + person.id} className="person">
+          <p>
+            <img className="Pic" src={person.picture} />
+          </p>
+          <p>
+            Name: {person.fname} {person.lname}
+          </p>
+          <p>Phone: {person.phone}</p>
+          <p>Email: {person.email}</p>
+        </div>
+      ))}
     </div>
-  );
+  )
 }
-export default Going;
